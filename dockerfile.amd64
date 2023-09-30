@@ -1,5 +1,12 @@
-ARG RPC_VERSION=0.15.1
+From rust:buster as builder
 
+WORKDIR WORKDIR /usr/src/
+
+RUN git clone https://github.com/Radiicall/jellyfin-rpc && cd jellyfin-rpc
+RUN cargo install --path .
+
+
+ARG RPC_VERSION=0.15.1
 
 FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbullseye
 
@@ -33,7 +40,7 @@ RUN \
     xdg-utils \
     libatomic1 \
     libc6 \
-    build-essential \
+    extra-runtime-dependencies \
     wget \
     ca-certificates \
     neofetch 
@@ -45,10 +52,10 @@ RUN echo "**** cleanup ****" && \
     /var/tmp/* \
     /tmp/*
 
-WORKDIR /kasm-user/
+WORKDIR /home/abc/
 
 # Copy configs
-COPY /root /kasm-user
+COPY /root/ /home/abc/
 
 #Download Discord
 RUN wget --no-check-certificate https://dl.discordapp.net/apps/linux/0.0.30/discord-0.0.30.tar.gz
@@ -57,9 +64,9 @@ RUN wget --no-check-certificate https://dl.discordapp.net/apps/linux/0.0.30/disc
 RUN tar -xvzf discord-0.0.30.tar.gz
 RUN chmod +x Discord/Discord
 
-# Create a symbolic link in a /bin directory
-# RUN ln -sf -v /opt/Discord/Discord /usr/bin/Discord 
-
 # Download RPC script
-RUN wget --no-check-certificate https://github.com/Radiicall/jellyfin-rpc/releases/download/0.15.1/jellyfin-rpc-x86_64-linux
+#RUN wget --no-check-certificate https://github.com/Radiicall/jellyfin-rpc/releases/download/0.15.1/jellyfin-rpc-x86_64-linux
+
+COPY --from=builder /usr/local/cargo/bin/jellyfin-rpc /usr/local/bin/jellyfin-rpc
+
 RUN chmod +x jellyfin-rpc-x86_64-linux
