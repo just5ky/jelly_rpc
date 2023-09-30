@@ -1,10 +1,11 @@
 From rust:buster as builder
 
-WORKDIR WORKDIR /usr/src/
+WORKDIR /usr/src/
 
-RUN git clone https://github.com/Radiicall/jellyfin-rpc && cd jellyfin-rpc
+RUN git clone https://github.com/Radiicall/jellyfin-rpc
+
+WORKDIR /usr/src/jellyfin-rpc
 RUN cargo install --path .
-
 
 ARG RPC_VERSION=0.15.1
 
