@@ -1,0 +1,65 @@
+ARG RPC_VERSION=0.15.1
+
+
+FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbullseye
+
+WORKDIR /opt/
+
+RUN \
+    apt-get update && \
+    apt-get install --no-install-recommends -y \
+    libnss3 \
+    libglib2.0-0 \
+    libnss3-dev \
+    libatk1.0-0 \
+    libgl1 \
+    libcurl4 \
+    libgbm1 \
+    libdrm2 \
+    libc++1 \
+    libayatana-appindicator1 \
+    gconf2 \
+    gconf-service \
+    libasound2 \
+    libcap2 \
+    libgconf-2-4 \
+    libgtk-3-0 \
+    libcanberra-gtk3-module \
+    libpulse0 \
+    libnotify4 \
+    libnss3 \
+    libxkbfile1 \
+    libxss1 \
+    libxtst6 \
+    libx11-xcb1 \
+    xdg-utils \
+    libatomic1 \
+    wget \
+    ca-certificates 
+
+RUN echo "**** cleanup ****" && \
+    apt-get autoclean && \
+    rm -rf \
+    /var/lib/apt/lists/* \
+    /var/tmp/* \
+    /tmp/*
+
+# Copy configs
+COPY /root / 
+
+#Download Discord
+RUN wget --no-check-certificate https://dl.discordapp.net/apps/linux/0.0.30/discord-0.0.30.tar.gz
+
+# Extract tar & make executable
+RUN tar -xvzf discord-0.0.30.tar.gz
+RUN chmod +x Discord/Discord
+
+# Create a symbolic link in a /bin directory
+RUN ln -sf -v /opt/Discord/Discord /usr/bin/Discord 
+
+# Download RPC script
+RUN wget --no-check-certificate https://github.com/Radiicall/jellyfin-rpc/releases/download/0.15.1/jellyfin-rpc-x86_64-linux
+
+
+# ports and volumes
+EXPOSE 3000

@@ -1,0 +1,35 @@
+{
+    "jellyfin": {
+        "url": "https://example.com",
+        "api_key": "sadasodsapasdskd",
+        "username": ["my_first_user", "my_second_user"],
+        "music": {
+            "display": ["year", "album", "genres"],
+            "separator": "-"
+        },
+        "blacklist": {
+            "media_types": ["music", "movie", "episode", "livetv"],
+            "libraries": ["Anime", "Anime Movies"]
+        }
+    },
+    "discord": {
+        "application_id": "1053747938519679018",
+        "buttons": [
+            {
+                "name": "dynamic",
+                "url": "dynamic"
+            },
+            {
+                "name": "dynamic",
+                "url": "dynamic"
+            }
+        ]
+    },
+    "imgur": {
+        "client_id": "asdjdjdg394209fdjs093"
+    },
+    "images": {
+        "enable_images": true,
+        "imgur_images": true
+    }
+}
