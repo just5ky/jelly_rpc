@@ -3,8 +3,6 @@ ARG RPC_VERSION=0.15.1
 
 FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbullseye
 
-WORKDIR /opt/
-
 RUN \
     apt-get update && \
     apt-get install --no-install-recommends -y \
@@ -34,8 +32,11 @@ RUN \
     libx11-xcb1 \
     xdg-utils \
     libatomic1 \
+    libc6 \
+    build-essential \
     wget \
-    ca-certificates 
+    ca-certificates \
+    neofetch 
 
 RUN echo "**** cleanup ****" && \
     apt-get autoclean && \
@@ -44,8 +45,10 @@ RUN echo "**** cleanup ****" && \
     /var/tmp/* \
     /tmp/*
 
+WORKDIR /kasm-user/
+
 # Copy configs
-COPY /root / 
+COPY /root /kasm-user
 
 #Download Discord
 RUN wget --no-check-certificate https://dl.discordapp.net/apps/linux/0.0.30/discord-0.0.30.tar.gz
@@ -55,7 +58,7 @@ RUN tar -xvzf discord-0.0.30.tar.gz
 RUN chmod +x Discord/Discord
 
 # Create a symbolic link in a /bin directory
-RUN ln -sf -v /opt/Discord/Discord /usr/bin/Discord 
+# RUN ln -sf -v /opt/Discord/Discord /usr/bin/Discord 
 
 # Download RPC script
 RUN wget --no-check-certificate https://github.com/Radiicall/jellyfin-rpc/releases/download/0.15.1/jellyfin-rpc-x86_64-linux
