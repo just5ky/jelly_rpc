@@ -1,4 +1,4 @@
-From rust:buster as builder
+FROM rust:buster as builder
 
 WORKDIR /usr/src/
 
@@ -9,7 +9,7 @@ RUN cargo install --path .
 
 ARG RPC_VERSION=0.15.1
 
-FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbullseye
+FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbullseye as release
 
 RUN \
     apt-get update && \
