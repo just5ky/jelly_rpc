@@ -60,7 +60,3 @@ RUN ln -sf -v /opt/Discord/Discord /usr/bin/Discord
 # Download RPC script
 RUN wget --no-check-certificate https://github.com/Radiicall/jellyfin-rpc/releases/download/0.15.1/jellyfin-rpc-x86_64-linux
 RUN chmod +x jellyfin-rpc-x86_64-linux
-
-
-# ports and volumes
-EXPOSE 3000
