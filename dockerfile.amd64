@@ -51,7 +51,7 @@ RUN echo "**** cleanup ****" && \
     /var/tmp/* \
     /tmp/*
 
-WORKDIR /root
+WORKDIR /home/abc
 
 # Copy configs
 COPY /base /
