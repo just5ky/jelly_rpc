@@ -40,8 +40,6 @@ RUN \
     libx11-xcb1 \
     xdg-utils \
     libatomic1 \
-    libc6 \
-    extra-runtime-dependencies \
     wget \
     ca-certificates \
     neofetch 
