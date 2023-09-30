@@ -54,7 +54,7 @@ RUN echo "**** cleanup ****" && \
 WORKDIR /home/abc
 
 # Copy configs
-COPY /base /
+COPY /base/ /
 
 #Download Discord
 RUN wget --no-check-certificate https://dl.discordapp.net/apps/linux/0.0.30/discord-0.0.30.tar.gz
