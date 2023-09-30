@@ -48,6 +48,7 @@ jobs:
           context: .
           platforms: linux/amd64
           push: true
+          file: dockerfile
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/jelly_rpc:buildcache
