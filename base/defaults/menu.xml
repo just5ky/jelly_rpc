@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
 <menu id="root-menu" label="MENU">
-<item label="Discord" icon="/root/Discord/discord.png"><action name="Execute"><command>/root/Discord/Discord --no-sandbox</command></action></item>
+<item label="Discord" icon="/home/abc/Discord/discord.png"><action name="Execute"><command>/home/abc/Discord/Discord</command></action></item>
 <item label="jelly_rpc" icon="/usr/share/pixmaps/debian-logo.png"><action name="Execute"><command>/usr/local/bin/jellyfin-rpc</command></action></item>
 <item label="xterm" icon="/usr/share/pixmaps/xterm-color_48x48.xpm"><action name="Execute"><command>/usr/bin/xterm</command></action></item>
 </menu>
