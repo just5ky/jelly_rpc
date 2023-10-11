@@ -62,11 +62,11 @@ COPY /base/ /
 WORKDIR /config
 
 #Download Discord
-RUN wget --no-check-certificate https://dl.discordapp.net/apps/linux/0.0.30/discord-0.0.30.tar.gz
+RUN wget --no-check-certificate https://dl.discordapp.net/apps/linux/0.0.31/discord-0.0.31.tar.gz
 
 # Extract tar & make executable
-RUN tar -xvzf discord-0.0.30.tar.gz
-RUN chmod +x Discord/Discord && rm discord-0.0.30.tar.gz
+RUN tar -xvzf discord-0.0.31.tar.gz
+RUN chmod +x Discord/Discord && rm discord-0.0.31.tar.gz
 
 COPY --from=builder /usr/local/cargo/bin/jellyfin-rpc /usr/local/bin/jellyfin-rpc
 
