@@ -33,13 +33,18 @@ RUN \
     libcanberra-gtk3-module \
     libpulse0 \
     libnotify4 \
-    libnss3 \
     libxkbfile1 \
     libxss1 \
     libxtst6 \
     libx11-xcb1 \
     xdg-utils \
     libatomic1 \
+    apt-utils \
+    dunst \
+    hunspell-en-us \
+    python3-dbus \
+    software-properties-common \
+    libgtk2.0-0 \
     wget \
     ca-certificates \
     neofetch 
